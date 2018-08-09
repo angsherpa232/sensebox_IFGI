@@ -1,0 +1,401 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="5KebY,-ltvxB7K^El}1(" x="29" y="-316">
+    <statement name="SETUP_FUNC">
+      <block type="sensebox_display_beginDisplay" id="zvo/-ibf6qxf0/p[q0TT">
+        <next>
+          <block type="sensebox_sd_create_file" id="3pCY2We,Q:IMKlp20c_t">
+            <field name="Filename">Filename</field>
+            <next>
+              <block type="sensebox_sd_open_file" id="[tt@;wL]erbYeYx(jbZF">
+                <statement name="SD">
+                  <block type="sensebox_sd_write_file" id="ElEq(O_AhH4ahlKCc+Q.">
+                    <field name="linebreak">TRUE</field>
+                    <value name="DATA">
+                      <block type="text" id="81GhLweYeta}wK#uj7cY">
+                        <field name="TEXT">latitude, longitude, altitude, sound, temperature, humidity, illuminance, pressure</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="FN|v0=;}EA%3#yZV?GtN">
+        <field name="VAR">temperature</field>
+        <value name="VALUE">
+          <block type="sensebox_sensor_temp_hum" id="}J=(A@6X#HsugrsvDN2}">
+            <field name="NAME">Temperature</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="~u0k.~?6@HQIMp9BqC^A">
+            <field name="VAR">humidity</field>
+            <value name="VALUE">
+              <block type="sensebox_sensor_temp_hum" id="%)j6@GmwN)ygHC^NMw1^">
+                <field name="NAME">Humidity</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="H%[2NFq^!qpO@Hc3u28s">
+                <field name="VAR">illuminance</field>
+                <value name="VALUE">
+                  <block type="sensebox_sensor_uv_light" id="`vT*0XlH9:zt?.a%~7z)">
+                    <field name="NAME">Illuminance</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="|-eWZ9]ROUQV!D:g~lS[">
+                    <field name="VAR">pressure</field>
+                    <value name="VALUE">
+                      <block type="sensebox_sensor_pressure" id="WGmKSh?UwJzcGzd%Zj.="></block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="W.[o,9a@GvkXUP|fx8^U">
+                        <field name="VAR">latitude</field>
+                        <value name="VALUE">
+                          <block type="sensebox_gps_getValues" id="W#SZ,3_*^M}@no`|-T/d">
+                            <field name="Values">Latitude</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="J8[Xqa9U.Q8G@J%0oTMA">
+                            <field name="VAR">longitude</field>
+                            <value name="VALUE">
+                              <block type="sensebox_gps_getValues" id="NE8W7r![7,vr.{QL4Y2I">
+                                <field name="Values">Longitude</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="?csGN9Ixz#pDiu7M%mO8">
+                                <field name="VAR">altitude</field>
+                                <value name="VALUE">
+                                  <block type="sensebox_gps_getValues" id="=0=su1i%5Oxr`UN}?iIp">
+                                    <field name="Values">Altitude</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="TAj:C!y)0M}cmUI.]@G{">
+                                    <field name="VAR">sound</field>
+                                    <value name="VALUE">
+                                      <block type="sensebox_sensor_sound" id="lwIZ,Y*dwBWoZ*!v`KB7">
+                                        <field name="PIN">A1</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="sensebox_interval_timer" id="hisjgL@(t{VIQYWXJU]l">
+                                        <field name="interval">60000</field>
+                                        <statement name="DO">
+                                          <block type="sensebox_display_show" id="njO:a`[3v%n5I,p!0]rl">
+                                            <statement name="SHOW">
+                                              <block type="sensebox_display_printDisplay" id="K5EKR#3SGI//wm/aSQ2c">
+                                                <field name="COLOR">WHITE,BLACK</field>
+                                                <value name="SIZE">
+                                                  <block type="math_number" id="`6t[Ya:ko!|7BlK%[Lo^">
+                                                    <field name="NUM">1</field>
+                                                  </block>
+                                                </value>
+                                                <value name="X">
+                                                  <block type="math_number" id="e~F;wE;3Fy(wThl*7m0,">
+                                                    <field name="NUM">0</field>
+                                                  </block>
+                                                </value>
+                                                <value name="Y">
+                                                  <block type="math_number" id="FlpUx7[FdOg0{iHBy.F)">
+                                                    <field name="NUM">0</field>
+                                                  </block>
+                                                </value>
+                                                <value name="printDisplay">
+                                                  <block type="sensebox_sensor_temp_hum" id="Owtwh#oW_HhNS/`|o?0_">
+                                                    <field name="NAME">Temperature</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="sensebox_display_printDisplay" id="?7Yk|6_IxWH?C@ssw=hN">
+                                                    <field name="COLOR">WHITE,BLACK</field>
+                                                    <value name="SIZE">
+                                                      <block type="math_number" id="b)Y%J%:TBS}mj_XW7X8H">
+                                                        <field name="NUM">1</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="X">
+                                                      <block type="math_number" id="(Ys6tl-_efqK2GshdUI!">
+                                                        <field name="NUM">0</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="Y">
+                                                      <block type="math_number" id="}JWz:(wOqxCzr|=1UJU-">
+                                                        <field name="NUM">15</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="printDisplay">
+                                                      <block type="sensebox_sensor_temp_hum" id="Q2}EkB/MoF(7aU[SfYl+">
+                                                        <field name="NAME">Humidity</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="sensebox_display_printDisplay" id="nDgat5|uu}UIbZd{NT3-">
+                                                        <field name="COLOR">WHITE,BLACK</field>
+                                                        <value name="SIZE">
+                                                          <block type="math_number" id="!yN@SWBbQ@EjTDLYCdnS">
+                                                            <field name="NUM">1</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="X">
+                                                          <block type="math_number" id="){I*n)?h.QTi38!5lr@;">
+                                                            <field name="NUM">0</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="Y">
+                                                          <block type="math_number" id="Os!7PoIU/i=sHm]a=vp9">
+                                                            <field name="NUM">30</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="printDisplay">
+                                                          <block type="sensebox_sensor_pressure" id="2`teZUr}|bd{SFZq]`Y|"></block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="sensebox_display_printDisplay" id=";].FaRYxMT?p7_15r58C">
+                                                            <field name="COLOR">WHITE,BLACK</field>
+                                                            <value name="SIZE">
+                                                              <block type="math_number" id="6or3FXDza_18YqOw3^+^">
+                                                                <field name="NUM">1</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="X">
+                                                              <block type="math_number" id="1O+G9LL^fe*_nQs@3mIk">
+                                                                <field name="NUM">0</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="Y">
+                                                              <block type="math_number" id="xn%RmuNqJ3W`)ePOb197">
+                                                                <field name="NUM">45</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="printDisplay">
+                                                              <block type="sensebox_sensor_uv_light" id="?FVa}]*%rqmFs19pva-N">
+                                                                <field name="NAME">Illuminance</field>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="sensebox_display_printDisplay" id="63z;pfL#qgHFGaiojkj`">
+                                                                <field name="COLOR">WHITE,BLACK</field>
+                                                                <value name="SIZE">
+                                                                  <block type="math_number" id="Vyy[~BBX|Q*%~exr/]Ah">
+                                                                    <field name="NUM">1</field>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="X">
+                                                                  <block type="math_number" id="`?%Wh;z+s{ID}((d)T{B">
+                                                                    <field name="NUM">45</field>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="Y">
+                                                                  <block type="math_number" id="{^=CdpY{eejM[H%IxTNo">
+                                                                    <field name="NUM">0</field>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="printDisplay">
+                                                                  <block type="sensebox_sensor_sound" id="MMK^Lk7g(^DT%YI1{`?0">
+                                                                    <field name="PIN">A1</field>
+                                                                  </block>
+                                                                </value>
+                                                                <next>
+                                                                  <block type="sensebox_display_printDisplay" id="FcGtBLD21.Ubs3GzL:5C">
+                                                                    <field name="COLOR">WHITE,BLACK</field>
+                                                                    <value name="SIZE">
+                                                                      <block type="math_number" id="g[mseC)9ESjI=wm+AW!q">
+                                                                        <field name="NUM">1</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="X">
+                                                                      <block type="math_number" id="~j^]!cpa-iKK])@#;gJD">
+                                                                        <field name="NUM">45</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="Y">
+                                                                      <block type="math_number" id="fcgy+%3Kv5tQF@4XnlCs">
+                                                                        <field name="NUM">15</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="printDisplay">
+                                                                      <block type="sensebox_gps_getValues" id="Y9_~hXZ?_P*((?A2`z]L">
+                                                                        <field name="Values">Latitude</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <next>
+                                                                      <block type="sensebox_display_printDisplay" id="Drn(Q*]p#.]biKBqlMJ4">
+                                                                        <field name="COLOR">WHITE,BLACK</field>
+                                                                        <value name="SIZE">
+                                                                          <block type="math_number" id="*aZ,0gWquC*+{pC~V.X.">
+                                                                            <field name="NUM">1</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="X">
+                                                                          <block type="math_number" id="IpEwVg-xi)k/n/weL``s">
+                                                                            <field name="NUM">45</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="Y">
+                                                                          <block type="math_number" id="ah2[+%,;i^+3O%#0Vy4~">
+                                                                            <field name="NUM">30</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="printDisplay">
+                                                                          <block type="sensebox_gps_getValues" id="k;CqAQ8yc=N0Ib`WV4aJ">
+                                                                            <field name="Values">Longitude</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <next>
+                                                                          <block type="sensebox_display_printDisplay" id="YMaf!cJmICdaJatR5=AH">
+                                                                            <field name="COLOR">WHITE,BLACK</field>
+                                                                            <value name="SIZE">
+                                                                              <block type="math_number" id="{9Y-I9Q)Pnj7U60m_%tb">
+                                                                                <field name="NUM">1</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="X">
+                                                                              <block type="math_number" id="-XD_{+NeFnjTu+[|OEMj">
+                                                                                <field name="NUM">45</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="Y">
+                                                                              <block type="math_number" id="mnPC!XT3|/a%OR!N}6Xv">
+                                                                                <field name="NUM">45</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="printDisplay">
+                                                                              <block type="sensebox_gps_getValues" id="h69E:#ebneo+6+~1dzev">
+                                                                                <field name="Values">Altitude</field>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type="sensebox_sd_open_file" id="nU!A)ph6Wnp:-/Ffq7Tz">
+                                                <statement name="SD">
+                                                  <block type="sensebox_sd_write_file" id="I9~Ww/C2^mz..LCA^`Qf">
+                                                    <field name="linebreak">TRUE</field>
+                                                    <value name="DATA">
+                                                      <block type="text_join" id="|[S?O+F8w/-D;v@nnXPg">
+                                                        <mutation items="15"></mutation>
+                                                        <value name="ADD0">
+                                                          <block type="variables_get" id="0R:vP6o@!HfJ=%5Dx@ql">
+                                                            <field name="VAR">latitude</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD1">
+                                                          <block type="text" id="c7rQ/v^2ohY4JJ~/y2Q,">
+                                                            <field name="TEXT">,</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD2">
+                                                          <block type="variables_get" id="NhwRNpz4xf{9@@e~rq7a">
+                                                            <field name="VAR">longitude</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD3">
+                                                          <block type="text" id="xBV9@hHaa/tbHEacWx6[">
+                                                            <field name="TEXT">,</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD4">
+                                                          <block type="variables_get" id="1^|F+zFF]*ky:Ni%e?3w">
+                                                            <field name="VAR">altitude</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD5">
+                                                          <block type="text" id="+rJ*Kh9S;=}ZN[{mYy*}">
+                                                            <field name="TEXT">,</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD6">
+                                                          <block type="variables_get" id="|,#y9.2j~)LP+2pR1:^f">
+                                                            <field name="VAR">sound</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD7">
+                                                          <block type="text" id="Pa`EmHsdq.G:sK*4c2Ek">
+                                                            <field name="TEXT">,</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD8">
+                                                          <block type="variables_get" id="_];5)vp%~i^Pkj~,*ff~">
+                                                            <field name="VAR">temperature</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD9">
+                                                          <block type="text" id="`+E3/|1K%,)[=:%)GhO%">
+                                                            <field name="TEXT">,</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD10">
+                                                          <block type="variables_get" id="Gyw{{YQ3C#wYq5:1[q[%">
+                                                            <field name="VAR">humidity</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD11">
+                                                          <block type="text" id="i8t8U%!lPwumKUA#F1Qm">
+                                                            <field name="TEXT">,</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD12">
+                                                          <block type="variables_get" id="Kb~(NdVH{SCb6#kD3r[u">
+                                                            <field name="VAR">illuminance</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD13">
+                                                          <block type="text" id="kC2VZ)OJ//`W2gz/dQap">
+                                                            <field name="TEXT">,</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD14">
+                                                          <block type="variables_get" id="`i{-ra=-t*[A;)ZEmyj=">
+                                                            <field name="VAR">pressure</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </statement>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
