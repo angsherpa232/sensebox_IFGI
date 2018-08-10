@@ -9,6 +9,6 @@ This task was carried out as a final project for a block course in [Institute of
 
 ## Authors:
 Ang Dawa Sherpa (a_sher02@uni-muenster.de)<br/>
-Roberto Luna (r_luna01@uni-muenster.de)<br/>
-Mitzi Araujo Vidal ( m_vida02@uni-muenster.de)<br/>
-Ștefana Cioban (s_ciob01@uni-muenster.de)
+[Roberto Luna](https://github.com/coffeebread42) (r_luna01@uni-muenster.de)<br/>
+[Mitzi Araujo Vidal](https://github.com/mitzividal) ( m_vida02@uni-muenster.de)<br/>
+[Ștefana Cioban](https://github.com/stefanacioban) (s_ciob01@uni-muenster.de)
